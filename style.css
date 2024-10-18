@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font: 18pt Arial;
+    background-color: rgb(117, 117, 117) 
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.w {
+    width: 75px;
+    height: 75px;
+    justify-content: center;
+    background-color: lightblue;
+    align-items: center;
+    transform: rotate(45deg);
+}
+
+#gameword {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+#gameword div:last-child {
+    grid-column: 2 / 3;
+}
