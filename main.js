@@ -12,24 +12,20 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria) => {
         })
         .join('');
 
-    const palavraFormada = {
-        valor: '',
-        obter: function() {
-            return this.valor;
-        },
-        adicionar: function(letra) {
-            this.valor += letra;
-            return this.valor;
-        },
-        apagarUltimaLetra: function() {
-            this.valor = this.valor.slice(0, -1);  // Remove a última letra
-            return this.valor;
-        },
-        resetar: function() {
-            this.valor = '';
-            return this.valor;
-        }
-    };
+    const palavraFormada = (() => {
+        let valor = '';
+        return {
+            obter: () => valor,
+            adicionar: (letra) => {
+                valor += letra;
+                return valor;
+            },
+            resetar: () => {
+                valor = '';
+                return valor;
+            }
+        };
+    })();
 
     // Adicionando eventos de clique para formar a palavra de maneira funcional
     letrasSelecionadas.forEach((letra, index) => {
