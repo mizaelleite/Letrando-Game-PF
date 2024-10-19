@@ -1,17 +1,30 @@
+// Função para exibir o jogo e esconder o menu
+const iniciarMenu = () => {
+    const botaoComecar = document.getElementById('btn-comecar');
+    const menu = document.getElementById('menu');
+    const jogo = document.getElementById('jogo');
+
+    botaoComecar.addEventListener('click', () => {
+        menu.style.display = 'none';  // Esconde o menu
+        jogo.style.display = 'block'; // Exibe o jogo
+        iniciarJogo(); // Inicia o jogo
+    });
+};
+
 // Função para verificar se a palavra formada está na lista e contém a letra obrigatória
 const verificarPalavra = (palavra, listaPalavras, letraObrigatoria) => 
-    listaPalavras.includes(palavra) && palavra.includes(letraObrigatoria);
+    listaPalavras.includes(palavra.toUpperCase()) && palavra.includes(letraObrigatoria);
 
 // Função para adicionar uma palavra corretamente acertada sem mutar a lista original
-const adicionarPalavra = (palavra, lista) => lista.concat(palavra);
+const adicionarPalavra = (palavra, lista) => lista.concat(palavra.toUpperCase());
 
 // Função para iniciar o jogo de acordo com a fase
 const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, palavrasAcertadas = []) => {
-    // Renderizando as letras na tela
+    // Renderizando as letras na tela em maiúsculas
     document.getElementById('gamelocal').innerHTML = letrasSelecionadas
         .map((letra, index) => {
             const estiloDestaque = letra === letraObrigatoria ? 'destaque' : 'normal';
-            return `<div class="w ${estiloDestaque}" id="letra-${index}">${letra}</div>`;
+            return `<div class="w ${estiloDestaque}" id="letra-${index}">${letra.toUpperCase()}</div>`; // Letras em maiúsculas
         })
         .join('');
 
@@ -27,7 +40,7 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
             return this.valor;
         },
         adicionar: function(letra) {
-            this.valor += letra;
+            this.valor += letra.toUpperCase();
             return this.valor;
         },
         apagarUltimaLetra: function() {
@@ -98,17 +111,17 @@ const iniciarJogo = () => {
     const fases = [
         {
             letras: ["A", "B", "O", "R", "T", "L", "H"],
-            palavrasValidas: ["ABORTO", "ROTA", "TORTA", "LATA", "RATO", "TOALHA", "TRABALHO", "BARATO", "TRALHA", "BOTAO"],
+            palavrasValidas: ["ABORTO", "TALHO", "TORTA", "LATA", "RATO", "TOALHA", "TRABALHO", "BARATO", "TRALHA", "BOTAO"],
             letraObrigatoria: 'T'
         },
         {
             letras: ["M", "A", "R", "T", "E", "O", "S"],
-            palavrasValidas: ["MARTE", "METRO", "MESTRE", "ASTRO", "MORTE", "TOMAR", "RESTO", "AROMA", "TERRA", "RASTRO"],
+            palavrasValidas: ["MARTE", "METRO", "MESTRE", "ASTRO", "ESTAR", "TOMAR", "RESTO", "AROMA", "TERRA", "RASTRO"],
             letraObrigatoria: 'R'
         },
         {
             letras: ["A", "E", "L", "S", "T", "V", "O"],
-            palavrasValidas: ["VASO", "SELO", "SALTO", "SELA", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA"],
+            palavrasValidas: ["VASO", "SELO", "SALTO", "ESTA", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA"],
             letraObrigatoria: 'S'
         }
     ];
@@ -151,5 +164,5 @@ const renderizarPalavraFormada = (palavra) => {
 
 // Inicializando o jogo quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
-    iniciarJogo();
+    iniciarMenu(); // Inicia com o menu
 });

@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <title>Game web</title>
+    <title>Letrando</title>
 </head>
 <body>
-    <h1>Complete a palavra</h1>
-    <div id="gamelocal"></div>
-    <button id="verificar">Verificar Palavra</button>
-    <button id="apagar-letra">Apagar</button> 
-    <button id="proxima-fase">Próxima Fase</button>
-    <div id="palavra-formada"></div>
-    <div id="palavras-acertadas"></div> <!-- Adicionado para exibir as palavras acertadas -->
+
+    <!-- Menu Inicial -->
+    <div id="menu">
+        <h1>Seja bem-vindo(a) ao Letrando</h1>
+        <p>No jogo <strong>Letrando</strong>, você deve selecionar as letras a fim de formar uma palavra válida. Observe que o círculo vermelho contém uma letra destacada, e essa deve ser obrigatória durante a formação das palavras. Seu objetivo é completar 10 palavras válidas por rodada. Somente completando as 10 palavras, poderá passar de fase.</p>
+        <button id="btn-comecar">Começar o Jogo</button>
+    </div>
+
+    <!-- Área do Jogo (escondida inicialmente) -->
+    <div id="jogo" style="display: none;">
+        <h1>Complete a palavra</h1>
+        <div id="gamelocal"></div>
+        <button id="verificar">Verificar</button>
+        <button id="apagar-letra">Apagar</button> 
+        <button id="proxima-fase" disabled>Próxima Fase</button>
+        <div id="palavra-formada"></div>
+        <div id="palavras-acertadas"></div>
+    </div>
+
 </body>
 </html>
