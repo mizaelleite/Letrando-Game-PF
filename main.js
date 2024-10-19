@@ -2,11 +2,10 @@
 const verificarPalavra = (palavra, listaPalavras, letraObrigatoria) => 
     listaPalavras.includes(palavra) && palavra.includes(letraObrigatoria);
 
-// Função para adicionar palavra correta e retornar um novo estado das palavras acertadas
-const adicionarPalavraAcertada = (palavra, palavrasAcertadas) => 
-    palavrasAcertadas.includes(palavra) ? palavrasAcertadas : [...palavrasAcertadas, palavra];
+// Função para adicionar uma palavra corretamente acertada sem mutar a lista original
+const adicionarPalavra = (palavra, lista) => lista.concat(palavra);
 
-// Função para iniciar a fase e controlar o estado do jogo de forma funcional
+// Função para iniciar o jogo de acordo com a fase
 const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, palavrasAcertadas = []) => {
     // Renderizando as letras na tela
     document.getElementById('gamelocal').innerHTML = letrasSelecionadas
@@ -17,11 +16,9 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
         .join('');
 
     // Função para renderizar as palavras acertadas na tela
-    const renderizarPalavrasAcertadas = (palavras) => {
+    const renderizarPalavrasAcertadas = () => {
         const divPalavrasAcertadas = document.getElementById('palavras-acertadas');
-        if (divPalavrasAcertadas) {
-            divPalavrasAcertadas.innerHTML = `<strong>Palavras acertadas:</strong> ${palavras.join(', ')}`;
-        }
+        divPalavrasAcertadas.innerHTML = `<strong>Palavras acertadas:</strong> ${palavrasAcertadas.join(', ')}`;
     };
 
     const palavraFormada = {
@@ -63,28 +60,27 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
     // Verificando a palavra quando o jogador clicar em "Verificar"
     novoBotaoVerificar.addEventListener('click', () => {
         const palavra = palavraFormada.obter();
-        const novasPalavrasAcertadas = adicionarPalavraAcertada(palavra, palavrasAcertadas);
-
-        if (novasPalavrasAcertadas.length > palavrasAcertadas.length) {
-            alert(`Parabéns! Você acertou a palavra: ${palavra}`);
-            renderizarPalavrasAcertadas(novasPalavrasAcertadas); // Agora exibimos as palavras acertadas na tela
-        } else if (!verificarPalavra(palavra, palavrasValidas, letraObrigatoria)) {
-            alert('A palavra não é válida ou não contém a letra obrigatória.');
+        if (verificarPalavra(palavra, palavrasValidas, letraObrigatoria)) {
+            if (!palavrasAcertadas.includes(palavra)) {
+                const novasPalavrasAcertadas = adicionarPalavra(palavra, palavrasAcertadas);  // Armazenar a palavra correta sem mutação
+                alert(`Parabéns! Você acertou a palavra: ${palavra}`);
+                palavrasAcertadas = novasPalavrasAcertadas;
+                renderizarPalavrasAcertadas();  // Atualizar a lista de palavras acertadas na tela
+            } else {
+                alert('Você já acertou essa palavra.');
+            }
         } else {
-            alert('Você já acertou essa palavra.');
+            alert('A palavra não é válida ou não contém a letra obrigatória.');
         }
 
-        // Verificando se todas as 10 palavras foram acertadas
-        if (novasPalavrasAcertadas.length === 10) {
+        // Verificando se todas as palavras válidas foram acertadas
+        if (palavrasAcertadas.length === palavrasValidas.length) {
             alert('Parabéns! Você acertou todas as palavras desta fase!');
             document.getElementById('proxima-fase').disabled = false; // Habilita o botão de próxima fase
         }
 
         palavraFormada.resetar();
         renderizarPalavraFormada(palavraFormada.obter());
-
-        // Reinicia a fase com o estado atualizado de palavras acertadas
-        iniciarFase(letrasSelecionadas, palavrasValidas, letraObrigatoria, novasPalavrasAcertadas);
     });
 
     // Desabilitar o botão de próxima fase até acertar todas as palavras
@@ -95,9 +91,6 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
         palavraFormada.apagarUltimaLetra();
         renderizarPalavraFormada(palavraFormada.obter());
     });
-
-    // Exibimos as palavras acertadas inicialmente (caso já existam)
-    renderizarPalavrasAcertadas(palavrasAcertadas);
 };
 
 // Função para iniciar o jogo
@@ -105,7 +98,7 @@ const iniciarJogo = () => {
     const fases = [
         {
             letras: ["a", "b", "o", "r", "t", "l", "h"],
-            palavrasValidas: ["aborto", "talho", "torta", "lata", "rato", "toalha", "trabalho", "barato", "tralha", "botao"],
+            palavrasValidas: ["aborto", "talho", "torta", "lata", "rolar", "toalha", "trabalho", "barato", "tralha", "botao"],
             letraObrigatoria: 't'
         },
         {

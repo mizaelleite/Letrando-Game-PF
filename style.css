@@ -1,16 +1,30 @@
+/* Estilização Geral */
 body {
     margin: 0;
-    font: 18pt Arial;
-    background-color: rgb(0, 0, 0);
+    font: 18pt Arial, sans-serif;
+    background-color: #1a1a1d;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
+/* Título */
 h1 {
     text-align: center;
-    color: white;
+    color: #feffff;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 36px;
 }
 
+/* Letras do Jogo */
 .w {
-    font-weight:bold;
+    font-weight: bold;
     font-size: 20pt;
     color: white;
     display: flex;
@@ -18,46 +32,83 @@ h1 {
     width: 100px;
     height: 100px;
     justify-content: center;
-    background-color: rgb(167, 164, 164);
+    background-color: #444;
     align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
+.w:hover {
+    transform: scale(1.1);
+    background-color: #67e0fb;
+}
+
+/* Destaque para a Letra Obrigatória */
 .destaque {
-    background-color: red; /* Vermelho para a letra obrigatória */
+    background-color: #e74c3c;
     font-weight: bold;
 }
 
+/* Área onde as Letras são Dispostas */
 #gamelocal {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     gap: 20px;
     justify-content: center;
     align-items: center;
-    height: 350px;
+    margin-top: 20px;
 }
 
+/* Centralização das Letras no Final da Grade */
 #gamelocal div:last-child {
     grid-column: 2 / 3;
 }
 
+/* Palavra Formada */
 #palavra-formada {
     text-align: center;
-    color: white;
+    color: #67e0fb;
     font-size: 24px;
     margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Palavras Acertadas */
+#palavras-acertadas {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Botões de Ação */
 button {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
+    background-color: #67e0fb;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
-#palavras-acertadas {
-    margin-top: 20px;
-    color: white;
-    text-align: center;
-    font-size: 18px;
+button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+}
+
+/* Tornar o Layout Responsivo */
+@media (max-width: 600px) {
+    #gamelocal {
+        grid-template-columns: repeat(2, 100px);
+    }
+
+    .w {
+        width: 80px;
+        height: 80px;
+        font-size: 18pt;
+    }
 }
