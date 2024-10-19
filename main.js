@@ -71,8 +71,8 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria) => {
             alert('A palavra não é válida ou não contém a letra obrigatória.');
         }
 
-        // Verificando se todas as 10 palavras foram acertadas
-        if (palavrasAcertadas.length === 10) {
+        // Verificando se todas as palavras válidas foram acertadas
+        if (palavrasAcertadas.length === palavrasValidas.length) {
             alert('Parabéns! Você acertou todas as palavras desta fase!');
             document.getElementById('proxima-fase').disabled = false; // Habilita o botão de próxima fase
         }
@@ -103,11 +103,6 @@ const iniciarJogo = () => {
             letras: ["m", "a", "r", "t", "e", "o", "s"],
             palavrasValidas: ["marte", "metro", "mestre", "astro", "estar", "tomar", "resto", "aroma", "terra", "rastro"],
             letraObrigatoria: 'r'
-        },
-        {
-            letras: ["a", "e", "l", "s", "t", "v", "o"],
-            palavrasValidas: ["vaso", "selo", "salto", "esta", "estalo", "veste", "sol", "seta", "salvo", "selva"],
-            letraObrigatoria: 's'
         }
     ];
 
