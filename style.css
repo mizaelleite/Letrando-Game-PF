@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font: 18pt Arial;
-    background-color: rgb(117, 117, 117) 
+    background-color: rgb(0, 0, 0) 
 }
 
 h1 {
@@ -10,12 +10,20 @@ h1 {
 }
 
 .w {
-    width: 75px;
-    height: 75px;
+    font-weight:bold;
+    font-size: 20pt;
+    color: white;
+    display: flex;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
     justify-content: center;
-    background-color: lightblue;
+    background-color: rgb(167, 164, 164);
     align-items: center;
-    transform: rotate(45deg);
+}
+
+#five {
+    background-color: rgb(240, 98, 98);
 }
 
 #gameword {
@@ -30,3 +38,5 @@ h1 {
 #gameword div:last-child {
     grid-column: 2 / 3;
 }
+
+
