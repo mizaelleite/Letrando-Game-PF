@@ -36,7 +36,6 @@ h1 {
     height: 350px;
 }
 
-
 #gamelocal div:last-child {
     grid-column: 2 / 3;
 }
@@ -54,4 +53,11 @@ button {
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
+}
+
+#palavras-acertadas {
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
 }
