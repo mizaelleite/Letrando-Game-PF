@@ -96,7 +96,7 @@ const iniciarJogo = () => {
     const fases = [
         {
             letras: ["a", "b", "o", "r", "t", "l", "h"],
-            palavrasValidas: ["aborto", "talho", "torta", "lata", "rolar", "toalha", "trabalho", "barato", "tralha", "botao"],
+            palavrasValidas: ["aborto", "barata", "torta", "lata", "rato", "toalha", "trabalho", "barato", "tralha", "botao"],
             letraObrigatoria: 't'
         },
         {
