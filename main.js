@@ -12,6 +12,14 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria) => {
         })
         .join('');
 
+    let palavrasAcertadas = [];
+
+    // Função para renderizar as palavras acertadas na tela
+    const renderizarPalavrasAcertadas = () => {
+        const divPalavrasAcertadas = document.getElementById('palavras-acertadas');
+        divPalavrasAcertadas.innerHTML = `<strong>Palavras acertadas:</strong> ${palavrasAcertadas.join(', ')}`;
+    };
+
     const palavraFormada = {
         valor: '',
         obter: function() {
@@ -50,14 +58,31 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria) => {
 
     // Verificando a palavra quando o jogador clicar em "Verificar"
     novoBotaoVerificar.addEventListener('click', () => {
-        if (verificarPalavra(palavraFormada.obter(), palavrasValidas, letraObrigatoria)) {
-            alert('Parabéns! Você formou uma palavra correta!');
+        const palavra = palavraFormada.obter();
+        if (verificarPalavra(palavra, palavrasValidas, letraObrigatoria)) {
+            if (!palavrasAcertadas.includes(palavra)) {
+                palavrasAcertadas.push(palavra);  // Armazenar a palavra correta
+                alert(`Parabéns! Você acertou a palavra: ${palavra}`);
+                renderizarPalavrasAcertadas();  // Atualizar a lista de palavras acertadas na tela
+            } else {
+                alert('Você já acertou essa palavra.');
+            }
         } else {
             alert('A palavra não é válida ou não contém a letra obrigatória.');
         }
+
+        // Verificando se todas as 10 palavras foram acertadas
+        if (palavrasAcertadas.length === 10) {
+            alert('Parabéns! Você acertou todas as palavras desta fase!');
+            document.getElementById('proxima-fase').disabled = false; // Habilita o botão de próxima fase
+        }
+
         palavraFormada.resetar();
         renderizarPalavraFormada(palavraFormada.obter());
     });
+
+    // Desabilitar o botão de próxima fase até acertar todas as palavras
+    document.getElementById('proxima-fase').disabled = true;
 
     // Adicionando evento para apagar a última letra
     novoBotaoApagar.addEventListener('click', () => {
