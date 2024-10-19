@@ -100,15 +100,3 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Tornar o Layout Responsivo */
-@media (max-width: 600px) {
-    #gamelocal {
-        grid-template-columns: repeat(2, 100px);
-    }
-
-    .w {
-        width: 80px;
-        height: 80px;
-        font-size: 18pt;
-    }
-}
