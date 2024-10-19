@@ -18,7 +18,7 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
     // Função para renderizar as palavras acertadas na tela
     const renderizarPalavrasAcertadas = () => {
         const divPalavrasAcertadas = document.getElementById('palavras-acertadas');
-        divPalavrasAcertadas.innerHTML = `<strong>Palavras acertadas:</strong> ${palavrasAcertadas.join(', ')}`;
+        divPalavrasAcertadas.innerHTML = `<strong>Palavras acertadas (${palavrasAcertadas.length}):</strong> ${palavrasAcertadas.join(', ')}`;
     };
 
     const palavraFormada = {
@@ -98,7 +98,7 @@ const iniciarJogo = () => {
     const fases = [
         {
             letras: ["a", "b", "o", "r", "t", "l", "h"],
-            palavrasValidas: ["aborto", "talho", "torta", "lata", "rolar", "toalha", "trabalho", "barato", "tralha", "botao"],
+            palavrasValidas: ["aborto", "talho", "torta", "lata", "rato", "toalha", "trabalho", "barato", "tralha", "botao"],
             letraObrigatoria: 't'
         },
         {
