@@ -97,19 +97,19 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
 const iniciarJogo = () => {
     const fases = [
         {
-            letras: ["a", "b", "o", "r", "t", "l", "h"],
-            palavrasValidas: ["aborto", "talho", "torta", "lata", "rato", "toalha", "trabalho", "barato", "tralha", "botao"],
-            letraObrigatoria: 't'
+            letras: ["A", "B", "O", "R", "T", "L", "H"],
+            palavrasValidas: ["ABORTO", "ROTA", "TORTA", "LATA", "RATO", "TOALHA", "TRABALHO", "BARATO", "TRALHA", "BOTAO"],
+            letraObrigatoria: 'T'
         },
         {
-            letras: ["m", "a", "r", "t", "e", "o", "s"],
-            palavrasValidas: ["marte", "metro", "mestre", "astro", "estar", "tomar", "resto", "aroma", "terra", "rastro"],
-            letraObrigatoria: 'r'
+            letras: ["M", "A", "R", "T", "E", "O", "S"],
+            palavrasValidas: ["MARTE", "METRO", "MESTRE", "ASTRO", "MORTE", "TOMAR", "RESTO", "AROMA", "TERRA", "RASTRO"],
+            letraObrigatoria: 'R'
         },
         {
-            letras: ["a", "e", "l", "s", "t", "v", "o"],
-            palavrasValidas: ["vaso", "selo", "salto", "esta", "estalo", "veste", "sol", "seta", "salvo", "selva"],
-            letraObrigatoria: 's'
+            letras: ["A", "E", "L", "S", "T", "V", "O"],
+            palavrasValidas: ["VASO", "SELO", "SALTO", "SELA", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA"],
+            letraObrigatoria: 'S'
         }
     ];
 
