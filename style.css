@@ -39,7 +39,6 @@ h1 {
 
 #gamelocal div:last-child {
     grid-column: 2 / 3;
-<<<<<<< HEAD
 }
 
 #palavra-formada {
@@ -55,6 +54,4 @@ button {
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-=======
->>>>>>> 48791d2 (adicionando lista de palavras)
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // JavaScript - Salvo em um arquivo separado chamado 'main.js'
 // Função para verificar se a palavra formada está na lista e contém a letra obrigatória
 const verificarPalavra = (palavra, listaPalavras, letraObrigatoria) => 
@@ -14,22 +13,22 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria) => {
         })
         .join('');
 
-    const palavraFormada = (() => {
-        let valor = '';
-        return {
-            obter: () => valor,
-            adicionar: (letra) => {
-                valor += letra;
-                return valor;
-            },
-            resetar: () => {
-                valor = '';
-                return valor;
-            }
-        };
-    })();
+    const palavraFormada = {
+        valor: '',
+        obter: function() {
+            return this.valor;
+        },
+        adicionar: function(letra) {
+            this.valor += letra;
+            return this.valor;
+        },
+        resetar: function() {
+            this.valor = '';
+            return this.valor;
+        }
+    };
 
-    // Adicionando eventos de clique para formar a palavra
+    // Adicionando eventos de clique para formar a palavra de maneira funcional
     letrasSelecionadas.forEach((letra, index) => {
         document.getElementById(`letra-${index}`).addEventListener('click', () => {
             palavraFormada.adicionar(letra);
@@ -69,16 +68,16 @@ const iniciarJogo = () => {
         }
     ];
 
-    const faseAtual = (() => {
-        let valor = 0;
-        return {
-            obter: () => valor,
-            incrementar: () => {
-                valor += 1;
-                return valor;
-            }
-        };
-    })();
+    const faseAtual = {
+        valor: 0,
+        obter: function() {
+            return this.valor;
+        },
+        incrementar: function() {
+            this.valor += 1;
+            return this.valor;
+        }
+    };
 
     const iniciarProximaFase = () => {
         if (faseAtual.obter() < fases.length) {
@@ -105,9 +104,3 @@ const renderizarPalavraFormada = (palavra) => {
 document.addEventListener('DOMContentLoaded', () => {
     iniciarJogo();
 });
-=======
-// Criando os arrays que irão conter as palavras possíveis a serem formadas
-const palavras1 = ["aborto", "talho", "torta", "lata", "rolar", "toalha", "trabalho", "barato", "tralha", "botao"]
-const palavras2 = ["marte", "metro", "mestre", "astro", "estar", "tomar", "resto", "aroma", "terra", "rastro"]
-const palavras3 = ["vaso", "selo", "salto", "esta", "estalo", "veste","sol", "seta", "salvo","selva"]
->>>>>>> 48791d2 (adicionando lista de palavras)
