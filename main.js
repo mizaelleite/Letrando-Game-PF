@@ -87,8 +87,8 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
         }
 
         // Verificando se todas as palavras válidas foram acertadas
-        if (palavrasAcertadas.length === palavrasValidas.length) {
-            alert('Parabéns! Você acertou todas as palavras desta fase!');
+        if (palavrasAcertadas.length === 7) {
+            alert('Parabéns! Você acertou a quantidade necessária de palavras desta fase!');
             document.getElementById('proxima-fase').disabled = false; // Habilita o botão de próxima fase
         }
 
@@ -111,18 +111,18 @@ const iniciarJogo = () => {
     const fases = [
         {
             letras: ["A", "B", "O", "R", "T", "L", "H"],
-            palavrasValidas: ["ABORTO", "TALHO", "TORTA", "LATA", "RATO", "TOALHA", "TRABALHO", "BARATO", "TRALHA", "BOTAO"],
-            letraObrigatoria: 'T'
+            palavrasValidas: ["TOLO", "BARALHO", "TRATOR", "TATO", "ABORTO", "BOTA", "TALHO", "TORTA", "LATA", "RATO", "TOALHA", "TRABALHO", "BARATO", "TRALHA", "BOTAO", "BOLHA", "HORTA", "ORBITA", "ORBITAL", "ROTATORIA", "ROTULO", "ROTULAR", "BARATA", "TALHADO", "TORTO", "BOTAR", "ROTA"],
+            letraObrigatoria: 'T',
         },
         {
             letras: ["M", "A", "R", "T", "E", "O", "S"],
-            palavrasValidas: ["MARTE", "METRO", "MESTRE", "ASTRO", "ESTAR", "TOMAR", "RESTO", "AROMA", "TERRA", "RASTRO"],
-            letraObrigatoria: 'R'
+            palavrasValidas: ["MARTE", "METRO", "MESTRE", "ASTRO", "ESTAR", "TOMAR", "RESTO", "AROMA", "TERRA", "RASTRO", "MORTE", "AMOSTRA", "SERRA", "MOSTRAR", "ROSTO", "RAMO", "SORTE", "TRATO", "MAESTRO", "TRAMA", "ARTE", "TESTE", "TESTA"],
+            letraObrigatoria: 'R',
         },
         {
             letras: ["A", "E", "L", "S", "T", "V", "O"],
-            palavrasValidas: ["VASO", "SELO", "SALTO", "ESTA", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA"],
-            letraObrigatoria: 'S'
+            palavrasValidas: ["VASO", "SELO", "SALTO", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA", "SOLTO", "VOSSO", "LEVAS", "VASTO", "VOLTA", "TESTA", "ALTO", "VELA", "SELA", "TELA", "LESTE", "VOTO", "TESLA"],
+            letraObrigatoria: 'S',
         }
     ];
 
