@@ -87,7 +87,7 @@ const iniciarFase = (letrasSelecionadas, palavrasValidas, letraObrigatoria, pala
         }
 
         // Verificando se todas as palavras válidas foram acertadas
-        if (palavrasAcertadas.length === 7) {
+        if (palavrasAcertadas.length === 10) {
             alert('Parabéns! Você acertou a quantidade necessária de palavras desta fase!');
             document.getElementById('proxima-fase').disabled = false; // Habilita o botão de próxima fase
         }
@@ -121,7 +121,7 @@ const iniciarJogo = () => {
         },
         {
             letras: ["A", "E", "L", "S", "T", "V", "O"],
-            palavrasValidas: ["VASO", "SELO", "SALTO", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA", "SOLTO", "VOSSO", "LEVAS", "VASTO", "VOLTA", "TESTA", "ALTO", "VELA", "SELA", "TELA", "LESTE", "VOTO", "TESLA"],
+            palavrasValidas: ["VASO", "SELO", "SALTO", "ESTALO", "VESTE", "SOL", "SETA", "SALVO", "SELVA", "SOLTO", "VOSSO", "LEVAS", "VASTO","TESTA", "SELA", "LESTE","TESLA"],
             letraObrigatoria: 'S',
         }
     ];
